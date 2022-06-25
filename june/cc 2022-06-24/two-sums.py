@@ -26,3 +26,16 @@ class Solution:
             for j in range(i+1,len(nums)):
                 if(nums[i] + nums[j] == target):
                     return i , j
+
+
+# approch 2 with hash hap ::::::::::::::::::::::::::::::::::::::::::::::
+
+class Solution:
+    def twoSum(self, nums, target) :
+        dic = {}
+        for i in range(len(nums)):
+            remaining = target - nums[i]
+            if remaining in dic:
+                 return i , dic[remaining]
+            else:
+                dic[nums[i]] = i
