@@ -18,39 +18,64 @@
 
 # solutioN ::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
-class Solution:
-    def searchRange(self, nums, target):
-        first_occurance = self.find_first_occurance(nums , target)
-        last_occurance = self.find_last_occurance(nums , target)
-        return [first_occurance, last_occurance]
+# class Solution:
+#     def searchRange(self, nums, target):
+#         first_occurance = self.find_first_occurance(nums , target)
+#         last_occurance = self.find_last_occurance(nums , target)
+#         return [first_occurance, last_occurance]
         
-    def find_first_occurance(self, nums, target):
-        start = 0
-        end = len(nums) - 1
-        first_occurance = -1
-        while start <= end:
-            mid = (start + end) // 2
-            if target == nums[mid]:
-                first_occurance = mid
-                end = mid - 1
-            elif target > nums[mid]:
-                start = mid + 1
-            else:
-                end = mid - 1
-        return first_occurance
+#     def find_first_occurance(self, nums, target):
+#         start = 0
+#         end = len(nums) - 1
+#         first_occurance = -1
+#         while start <= end:
+#             mid = (start + end) // 2
+#             if target == nums[mid]:
+#                 first_occurance = mid
+#                 end = mid - 1
+#             elif target > nums[mid]:
+#                 start = mid + 1
+#             else:
+#                 end = mid - 1
+#         return first_occurance
             
         
-    def find_last_occurance(self , nums , target):
+#     def find_last_occurance(self , nums , target):
+#         start = 0
+#         end = len(nums) - 1
+#         last_occurance = -1
+#         while start <= end:
+#             mid = (start + end) // 2
+#             if target == nums[mid]:
+#                 last_occurance = mid
+#                 start = mid + 1
+#             elif target > nums[mid]:
+#                 start = mid + 1
+#             else:
+#                 end = mid = 1
+#         return last_occurance
+
+# After refractiong 
+class Solution:
+    def searchRange(self, nums, target):
+        first_occurance = self.find_occurance(nums , target , True)
+        last_occurance = self.find_occurance(nums , target , False)
+        return [first_occurance , last_occurance]
+        
+    def find_occurance(self, nums, target, flag):
         start = 0
         end = len(nums) - 1
-        last_occurance = -1
+        occurance = -1
         while start <= end:
             mid = (start + end) // 2
             if target == nums[mid]:
-                last_occurance = mid
-                start = mid + 1
+                occurance = mid
+                if flag:
+                    end = mid - 1
+                else:
+                    start = mid + 1
             elif target > nums[mid]:
                 start = mid + 1
             else:
-                end = mid = 1
-        return last_occurance
+                end = mid - 1
+        return occurance
