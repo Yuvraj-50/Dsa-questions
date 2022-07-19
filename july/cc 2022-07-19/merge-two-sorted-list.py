@@ -24,12 +24,11 @@
 #         self.val = val
 #         self.next = next
 from typing import Optional
-from xml.dom.minicompat import NodeList
 
 
 class Solution:
-    def mergeTwoLists(self, list1: Optional[NodeList], list2: Optional[NodeList]) -> Optional[NodeList]:
-        dummy  = NodeList()
+    def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+        dummy  = ListNode()
         temp = dummy
         
         while list1 and list2:
