@@ -53,4 +53,3 @@ class Solution:
                             vis[i] = 1
                             q.appendleft(i)
         return count
-        
